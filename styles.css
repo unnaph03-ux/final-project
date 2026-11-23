@@ -1,0 +1,881 @@
+/* ---------- COLORS ---------- */
+/* Change a color here and it updates everywhere. */
+:root {
+  --black: #000000;
+  --cream: #f5ecd9;
+  --off-white: #f5f6eb;
+  --gold: #f0bc68;
+  --dark-gold: #eaac49;
+  --dark-text: #3c3c3c;
+  --gray: #8a8a8a;
+  --teal: #00a7a7;
+  --sand: #eed6a0;
+  --dark-teal: #0d6b6b;
+  --light-teal: #45a0a0;
+}
+
+/* ---------- FONTS ---------- */
+/* These fonts are not on Google Fonts. Put the font files in a "fonts" folder. */
+@font-face {
+  font-family: "Louis George Cafe";
+  src: url("fonts/LouisGeorgeCafe.ttf");
+}
+
+@font-face {
+  font-family: "Louis George Cafe";
+  src: url("fonts/LouisGeorgeCafe-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Fannabella";
+  src: url("fonts/Fannabella.ttf");
+}
+
+/* ---------- PAGE ---------- */
+body {
+  margin: 0;
+  background-color: var(--black);
+  color: var(--cream);
+  font-family: "Louis George Cafe", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* The design is 440px wide, so the page stays in a centered column. */
+.site-header,
+main,
+.site-footer {
+  width: 440px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- BUTTONS ---------- */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--gold);
+  color: var(--off-white);
+  font-family: "Fannabella", sans-serif;
+  border-radius: 50px;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: var(--dark-gold);
+}
+
+.button-arrow {
+  width: 28px;
+}
+
+/* ---------- HEADER ---------- */
+.site-header {
+  padding-top: 60px;
+  padding-bottom: 13px;
+  background-color: var(--black);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 26px;
+}
+
+.header-logo {
+  width: 253px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.header-date {
+  margin: 4px 0 0 0;
+  font-size: 15px;
+  line-height: 15px;
+  text-align: right;
+  color: var(--cream);
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 14px;
+  padding: 0 26px;
+}
+
+.header-button {
+  width: 135px;
+  height: 60px;
+  margin-left: auto;
+  font-size: 32px;
+}
+
+/* ---------- HAMBURGER BUTTON ---------- */
+.menu {
+  margin-top: 38px;
+}
+
+/* Closed: three lines, 43px wide. */
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 43px;
+  height: 22px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  list-style: none;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.menu-line {
+  width: 43px;
+  height: 2px;
+  background-color: var(--cream);
+  transition: transform 0.3s, opacity 0.3s, width 0.3s;
+}
+
+/* ---------- MENU OPEN: lines turn into an X ---------- */
+/* When the menu is open, the details tag gets an "open" attribute. */
+/* The menu covers the screen and the button moves to the top right corner. */
+.menu[open] {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 10;
+  width: 440px;
+  max-width: 100%;
+  height: 100%;
+  margin-top: 0;
+  transform: translateX(-50%);
+  background-color: var(--black);
+  background-image: url("images/hero.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% auto;
+  animation: menu-fade-in 0.3s;
+}
+
+.menu[open] .menu-button {
+  position: absolute;
+  top: 62px;
+  right: 26px;
+  z-index: 11;
+  width: 43px;
+  height: 43px;
+  border-color: var(--cream);
+}
+
+.menu[open] .menu-line {
+  width: 20px;
+}
+
+.menu[open] .menu-line-top {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.menu[open] .menu-line-middle {
+  opacity: 0;
+}
+
+.menu[open] .menu-line-bottom {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+@keyframes menu-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- MENU PAGE ---------- */
+.menu-panel {
+  padding: 60px 26px 0 26px;
+}
+
+.menu-logo {
+  display: block;
+  width: 253px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.menu-label {
+  margin: 14px 0 0 0;
+  padding: 14px 0 12px 0;
+  border-top: 1px solid var(--cream);
+  border-bottom: 1px solid var(--cream);
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--cream);
+}
+
+.menu-list {
+  margin: 0 0 30px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-item {
+  border-bottom: 1px solid var(--cream);
+}
+
+.menu-link {
+  display: block;
+  padding: 16px 0 15px 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--off-white);
+  transition: color 0.2s;
+}
+
+.menu-link:hover {
+  color: var(--gold);
+}
+
+.menu-passes-button {
+  height: 48px;
+  font-size: 24px;
+}
+
+/* ---------- HERO ---------- */
+.hero-words {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+  padding: 0 24px;
+  font-size: 20px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  color: var(--cream);
+}
+
+.hero-left {
+  margin: 0;
+}
+
+.hero-right {
+  width: 139px;
+  margin: 0;
+  text-align: right;
+}
+
+/* The logo sits on top of the photo, so the photo is pulled up behind it. */
+.hero-logo {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 388px;
+  max-width: 100%;
+  margin: 36px auto 0 auto;
+}
+
+.hero-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 524px;
+  margin-top: -90px;
+  padding-top: 126px;
+  box-sizing: border-box;
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-tagline {
+  margin: 0 0 33px 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--cream);
+}
+
+.hero-button {
+  width: 250px;
+  height: 43px;
+  font-size: 32px;
+}
+
+/* ---------- STORY SECTIONS ---------- */
+.story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 17px;
+}
+
+.story-title {
+  margin: 27px 0 0 0;
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: 1.4px;
+  text-align: center;
+  color: var(--off-white);
+}
+
+.story-text {
+  width: 335px;
+  margin: 27px 0 27px 0;
+  font-size: 36px;
+  line-height: 41px;
+  letter-spacing: 1.8px;
+  text-align: center;
+  color: var(--off-white);
+}
+
+.story-image {
+  width: 406px;
+  max-width: 100%;
+  height: 302px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 27px 0 32px 0;
+  text-align: center;
+  color: var(--cream);
+}
+
+.footer-small {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 1.2px;
+}
+
+.footer-medium {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 1.8px;
+}
+
+.footer-large {
+  margin: 0 0 27px 0;
+  font-size: 41px;
+  letter-spacing: 2.05px;
+}
+
+.footer-button {
+  width: 319px;
+  height: 36px;
+  font-size: 24px;
+}
+
+/* ================= ABOUT PAGE ================= */
+
+/* ---------- ABOUT INTRO ---------- */
+.about-title {
+  margin: 28px 0 28px 0;
+  padding: 0 0 0 28px;
+  font-family: "Fannabella", sans-serif;
+  font-size: 64px;
+  font-weight: normal;
+  line-height: 50px;
+  color: var(--cream);
+}
+
+.about-image {
+  display: block;
+  width: 406px;
+  max-width: 100%;
+  height: 302px;
+  margin: 0 auto;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+.about-intro {
+  padding-bottom: 13px;
+}
+
+/* ---------- OUR STORY / OUR MISSION ---------- */
+.about-text {
+  padding: 0 28px;
+}
+
+.about-heading {
+  margin: 20px 0 0 0;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 1.4px;
+  color: var(--off-white);
+}
+
+.about-paragraph {
+  margin: 11px 0 0 0;
+  font-size: 20px;
+  line-height: 20px;
+  color: var(--off-white);
+}
+
+/* ---------- ABOUT THE DESIGNER ---------- */
+.designer-heading {
+  margin: 20px 0 30px 0;
+  padding: 0 28px;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 1.6px;
+  color: var(--off-white);
+}
+
+.designer-quote {
+  margin: 33px 0 0 0;
+  padding: 0 28px;
+  font-size: 20px;
+  line-height: 20px;
+  color: var(--off-white);
+}
+
+.designer-name {
+  margin: 20px 0 0 0;
+  padding: 0 28px;
+  font-size: 20px;
+  line-height: 20px;
+  color: var(--off-white);
+}
+
+/* ---------- SOURCES & CREDITS ---------- */
+.sources {
+  margin: 28px 14px 0 13px;
+  padding: 0 13px 59px 13px;
+  border-top: 1px solid var(--gray);
+}
+
+.sources .about-heading {
+  margin-top: 32px;
+}
+
+.sources .about-paragraph {
+  margin-bottom: 33px;
+}
+
+.source-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  height: 90px;
+  box-sizing: border-box;
+  margin-bottom: 9px;
+  padding: 5px 18px 0 0;
+  border-radius: 20px;
+  background-color: var(--cream);
+}
+
+.source-icon {
+  width: 70px;
+  height: 68px;
+  margin-top: 6px;
+  object-fit: contain;
+}
+
+.source-words {
+  flex: 1;
+}
+
+.source-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  color: var(--dark-text);
+}
+
+.source-description {
+  margin: 5px 0 0 0;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--dark-text);
+}
+
+.source-plus {
+  align-self: center;
+  width: 20px;
+  font-size: 36px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--dark-text);
+}
+
+/* ================= LINEUP PAGE ================= */
+
+.lineup-title {
+  margin: 27px 0 26px 0;
+  padding-left: 28px;
+  font-family: "Fannabella", sans-serif;
+  font-size: 96px;
+  font-weight: normal;
+  line-height: 75px;
+  color: var(--cream);
+}
+
+/* One color per day. The text inside each day uses this color. */
+.lineup-friday {
+  color: var(--teal);
+}
+
+.lineup-saturday {
+  color: var(--dark-gold);
+}
+
+.lineup-sunday {
+  color: var(--sand);
+}
+
+/* ---------- DAY ROW: date | headliner ---------- */
+.lineup-row {
+  display: flex;
+  padding-left: 23px;
+}
+
+.lineup-date-block {
+  width: 112px;
+  text-align: center;
+}
+
+.lineup-day-name {
+  margin: 0;
+  font-size: 48px;
+}
+
+.lineup-day-date {
+  margin: 0;
+  font-size: 24px;
+}
+
+.lineup-line {
+  width: 1px;
+  height: 71px;
+  margin: 9px 16px 0 0;
+  background-color: var(--cream);
+}
+
+.lineup-headliner {
+  text-align: center;
+}
+
+.lineup-headliner-name {
+  margin: 0;
+  font-size: 48px;
+  font-weight: normal;
+}
+
+.lineup-collab {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* ---------- ARTIST LIST ---------- */
+.lineup-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 30px;
+  width: 368px;
+  max-width: 100%;
+  margin: 3px auto 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.lineup-artist {
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--off-white);
+}
+
+/* ---------- LINES BETWEEN DAYS ---------- */
+.lineup-rule {
+  margin: 14px 1px 14px 26px;
+  border: 0;
+  border-top: 1px solid var(--gray);
+}
+
+/* ---------- TICKETS BUTTON ---------- */
+.lineup-button {
+  margin: 24px auto 36px auto;
+}
+
+/* ================= SCHEDULE PAGE ================= */
+
+.schedule-title {
+  margin: 15px 0 5px 27px;
+  font-family: "Fannabella", sans-serif;
+  font-size: 85px;
+  font-weight: normal;
+  line-height: 78px;
+  color: var(--cream);
+}
+
+/* ---------- DAY TABS ---------- */
+.schedule-tabs {
+  display: flex;
+  gap: 13px;
+  padding-left: 27px;
+}
+
+.schedule-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 43px;
+  border-radius: 50px;
+  background-color: var(--gold);
+  font-size: 18px;
+  color: var(--off-white);
+  transition: background-color 0.2s;
+}
+
+.schedule-tab:hover {
+  background-color: var(--dark-gold);
+}
+
+/* The tab for the day you are looking at */
+.schedule-tab-active,
+.schedule-tab-active:hover {
+  background-color: var(--dark-teal);
+}
+
+/* ---------- HOURS + TABLE ---------- */
+.schedule-body {
+  display: flex;
+  margin-top: 27px;
+  padding-bottom: 40px;
+}
+
+.schedule-hours {
+  width: 50px;
+  margin: 0;
+  padding: 78px 0 0 0;
+  list-style: none;
+  text-align: right;
+  color: var(--off-white);
+}
+
+.schedule-hour {
+  height: 30px;
+  margin-bottom: 13px;
+  font-size: 16px;
+  line-height: 15px;
+}
+
+.schedule-table {
+  display: flex;
+  width: 360px;
+  height: 537px;
+  margin-left: 5px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--cream);
+}
+
+/* ---------- STAGE COLUMNS ---------- */
+.schedule-stage {
+  flex: 1;
+}
+
+.schedule-stage-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  color: var(--off-white);
+}
+
+.schedule-lakefront .schedule-stage-name {
+  background-color: var(--light-teal);
+}
+
+.schedule-discovery .schedule-stage-name {
+  background-color: var(--sand);
+  color: var(--dark-text);
+}
+
+.schedule-gallery .schedule-stage-name {
+  background-color: var(--dark-gold);
+}
+
+.schedule-discovery,
+.schedule-gallery {
+  border-left: 1px solid var(--gray);
+}
+
+.schedule-cards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- EVENT CARDS ---------- */
+.schedule-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  width: 111px;
+  height: 38px;
+  margin-left: 5px;
+  border-radius: 5px;
+  color: black;
+}
+
+.schedule-name {
+  margin: 0;
+  font-size: 15px;
+  line-height: 15px;
+  text-align: center;
+}
+
+.schedule-name-medium {
+  font-size: 14px;
+}
+
+.schedule-name-small {
+  font-size: 13px;
+}
+
+.schedule-name-tiny {
+  font-size: 11px;
+}
+
+.schedule-time-range {
+  margin: 0;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: center;
+  color: #646464;
+}
+
+/* Card colors for each stage */
+.schedule-lakefront .schedule-card {
+  height: 56px;
+  gap: 4px;
+  background-color: rgba(98, 173, 173, 0.5);
+}
+
+.schedule-discovery .schedule-card {
+  background-color: rgba(238, 214, 160, 0.5);
+}
+
+.schedule-gallery .schedule-card {
+  background-color: rgba(203, 161, 94, 0.5);
+}
+
+/* Raven Kai is the featured act */
+.schedule-lakefront .schedule-card-featured {
+  flex-direction: row;
+  height: 64px;
+  gap: 0;
+  background-color: var(--dark-teal);
+  color: var(--off-white);
+}
+
+.schedule-card-featured .schedule-name,
+.schedule-card-featured .schedule-time-range {
+  color: var(--off-white);
+}
+
+.schedule-star {
+  width: 31px;
+  height: 23px;
+  object-fit: contain;
+}
+
+/* ---------- WHERE EACH CARD SITS ON THE TIMELINE ---------- */
+/* margin-top is the space above a card. A bigger number places it later in the day. */
+
+/* Lakefront Stage */
+.alina-voss {
+  margin-top: 6px;
+}
+
+.schedule-lakefront .florence-rey {
+  height: 42px;
+  margin-top: 25px;
+}
+
+.kairo {
+  margin-top: 4px;
+}
+
+.stevie-lane {
+  margin-top: 30px;
+}
+
+.rico-haze {
+  margin-top: 30px;
+}
+
+.raven-kai {
+  margin-top: 9px;
+}
+
+/* Discovery Stage */
+.lanyx {
+  margin-top: 49px;
+}
+
+.bea-solis {
+  margin-top: 32px;
+}
+
+.fka-violet {
+  margin-top: 19px;
+}
+
+.elise-monroe {
+  margin-top: 36px;
+}
+
+.remi-wilde {
+  margin-top: 54px;
+}
+
+/* Gallery Stage */
+.wave-form {
+  margin-top: 29px;
+}
+
+.zeno {
+  margin-top: 24px;
+}
+
+.pink-static {
+  margin-top: 32px;
+}
+
+.tyler-cross {
+  height: 51px;
+  margin-top: 20px;
+}
+
+.the-paper-hearts {
+  margin-top: 25px;
+}
+
+.clairose {
+  margin-top: 33px;
+}
